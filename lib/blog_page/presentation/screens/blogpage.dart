@@ -44,6 +44,7 @@ class _BlogpageState extends State<Blogpage> {
                       builder: (context) => Detailpage(blog: state.blogList[index]),
                     ),
                   ),
+                  imageUrl: state.blogList[index].image,
                 );
               },
             ),

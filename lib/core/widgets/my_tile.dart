@@ -1,9 +1,13 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 class MyTile extends StatelessWidget {
   final String title;
+  final String? imageUrl;
+  final Uint8List? imageBytes;
   final void Function()? onTap;
-  const MyTile({super.key, required this.title, this.onTap});
+  const MyTile({super.key, required this.title, this.onTap, this.imageUrl, this.imageBytes});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +22,24 @@ class MyTile extends StatelessWidget {
         width: double.maxFinite,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(
-            title,
-            style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (imageUrl != null)
+                Image.network(
+                  imageUrl!,
+                  fit: BoxFit.cover,
+                ),
+              if (imageBytes != null)
+                Image.memory(
+                  imageBytes!,
+                  fit: BoxFit.cover,
+                ),
+              Text(
+                title,
+                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
         ),
       ),

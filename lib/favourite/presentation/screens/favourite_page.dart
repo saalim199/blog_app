@@ -44,6 +44,7 @@ class _FavouritePageState extends State<FavouritePage> {
                       builder: (context) => OfflineDetail(blog: state.data[index]),
                     ),
                   ),
+                  imageBytes: state.data[index].image,
                 );
               },
             ),
