@@ -26,15 +26,22 @@ class MyTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (imageUrl != null)
-                Image.network(
-                  imageUrl!,
-                  fit: BoxFit.cover,
+                Center(
+                  child: Image.network(
+                    imageUrl!,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               if (imageBytes != null)
-                Image.memory(
-                  imageBytes!,
-                  fit: BoxFit.cover,
+                Center(
+                  child: Image.memory(
+                    imageBytes!,
+                    fit: BoxFit.contain,
+                  ),
                 ),
+              const SizedBox(
+                height: 10,
+              ),
               Text(
                 title,
                 style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
